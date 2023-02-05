@@ -13,27 +13,31 @@ UI folder includes:
 - builder of like-iOS dialogs,
 - builder of a widget with an image loaded by a link
 
-LinksLauncher is a class to open http(s) links and make calls.
+LinksLauncher is a class to open http(s) links and to make calls.
 
 HttpOverrides is a class that is necessary to show images for Android Apps.
 
-Helper to get and set values in Shared Preferences
+Helper to get and set values in Shared Preferences.
 
 ## Usage
 
-To add this package add in <pubspec.yaml> below dependencies:
+To use this package add in pubspec.yaml below dependencies the following lines:
 
+```
 dependencies:
   ...
   citro_byte_lib:
     git:
       url: https://github.com/a-balakmet/citro_byte_lib
       path: 
+```
 
 HttpOverrides has to be initialized starting any project that includes Android application.
 Below is an example to init HttpOverrides.
 
 ```
+import 'dart:io' show HttpOverrides, Platform;
+
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
@@ -43,9 +47,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 ```
-}
 
-All other classes, mixins, extensions are called directly 
+All other classes, mixins, extensions mey be called directly.
 
 ## Additional information
 
