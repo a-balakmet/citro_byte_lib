@@ -17,12 +17,23 @@ LinksLauncher is a class to open http(s) links and make calls.
 
 HttpOverrides is a class that is necessary to show images for Android Apps.
 
+Helper to get and set values in Shared Preferences
+
 ## Usage
+
+To add this package add in <pubspec.yaml> below dependencies:
+
+dependencies:
+  ...
+  citro_byte_lib:
+    git:
+      url: https://github.com/a-balakmet/citro_byte_lib
+      path: 
 
 HttpOverrides has to be initialized starting any project that includes Android application.
 Below is an example to init HttpOverrides.
 
-...
+```
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
@@ -31,7 +42,7 @@ class _MyAppState extends State<MyApp> {
     }
     super.initState();
   }
-...
+```
 }
 
 All other classes, mixins, extensions are called directly 
