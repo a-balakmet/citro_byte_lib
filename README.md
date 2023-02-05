@@ -23,12 +23,14 @@ Helper to get and set values in Shared Preferences
 
 To add this package add in <pubspec.yaml> below dependencies:
 
+```
 dependencies:
   ...
   citro_byte_lib:
     git:
       url: https://github.com/a-balakmet/citro_byte_lib
       path: 
+```
 
 HttpOverrides has to be initialized starting any project that includes Android application.
 Below is an example to init HttpOverrides.
@@ -43,7 +45,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 ```
-}
 
 All other classes, mixins, extensions are called directly 
 
