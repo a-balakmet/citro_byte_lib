@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,6 +36,7 @@ class PrefsHelper<T> {
         return (p.getString(key) ?? "") as T;
       }
     } else {
+      log("Prefs error for key $key");
       throw UnimplementedError();
     }
   }
