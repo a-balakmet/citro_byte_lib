@@ -6,7 +6,7 @@ homepage: https://github.com/a-balakmet/citro_byte_lib
 # versions' history
 # 0.0.1 - initial version
 # 0.0.2 - a module with Shared Preferences was added
-# 0.0.2 - debug log added in Shared Preferences
+# 0.0.3 - debug log added in Shared Preferences
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
