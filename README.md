@@ -13,11 +13,11 @@ UI folder includes:
 - builder of like-iOS dialogs,
 - builder of a widget with an image loaded by a link
 
-LinksLauncher is a class to open http(s) links and make calls.
+LinksLauncher is a class to open http(s) links and to make calls.
 
 HttpOverrides is a class that is necessary to show images for Android Apps.
 
-Helper to get and set values in Shared Preferences
+Helper to get and set values in Shared Preferences.
 
 ## Usage
 
