@@ -1,9 +1,11 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PrefsHelper {
+class PrefsHelper<T> {
   static Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
-  Future<void> set<T>(String key, T value) async {
+  Future<void> set(String key, T value) async {
     final p = await prefs;
     if (T is bool) {
       p.setBool(key, value as bool);
@@ -63,20 +65,20 @@ class PrefsHelper {
   //   }
   // }
 
-  // Future<R?> getClass<R>(String key, Function(T) converter) async {
-  //   final p = await prefs;
-  //   final value = p.getString(key) ?? '';
-  //   try {
-  //     return converter(value as T);
-  //   } catch (e) {
-  //     try {
-  //       final json = jsonDecode(value);
-  //       return converter(json as T);
-  //     } catch (e) {
-  //       return null;
-  //     }
-  //   }
-  // }
+  Future<R?> getClass<R>(String key, Function(T) converter) async {
+    final p = await prefs;
+    final value = p.getString(key) ?? '';
+    try {
+      return converter(value as T);
+    } catch (e) {
+      try {
+        final json = jsonDecode(value);
+        return converter(json as T);
+      } catch (e) {
+        return null;
+      }
+    }
+  }
 
   Future clear() async {
     final p = await prefs;
