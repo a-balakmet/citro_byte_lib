@@ -21,7 +21,7 @@ Helper to get and set values in Shared Preferences.
 
 ## Usage
 
-To add this package add in <pubspec.yaml> below dependencies:
+To use this package add in pubspec.yaml below dependencies the following lines:
 
 ```
 dependencies:
@@ -36,6 +36,8 @@ HttpOverrides has to be initialized starting any project that includes Android a
 Below is an example to init HttpOverrides.
 
 ```
+import 'dart:io' show HttpOverrides, Platform;
+
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
