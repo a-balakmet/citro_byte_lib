@@ -21,6 +21,31 @@ class PrefsHelper<T> {
     }
   }
 
+  Future<String> getString(String key) async {
+    final p = await prefs;
+    if (key == 'locale') {
+      return p.getString(key) ?? "ru";
+    } else {
+      return p.getString(key) ?? "" ;
+    }
+  }
+
+  Future<bool> getBool(String key) async {
+    final p = await prefs;
+    return p.getBool(key) ?? false;
+  }
+
+  Future<int> getInt(String key) async {
+    final p = await prefs;
+    return p.getInt(key) ?? 0;
+  }
+
+  Future<double> getDouble(String key) async {
+    final p = await prefs;
+    return p.getDouble(key) ?? 0.0;
+  }
+
+
   Future<T> get(String key) async {
     final p = await prefs;
     if (T is bool) {

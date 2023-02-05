@@ -1,12 +1,13 @@
 name: citro_byte_lib
 description: A Flutter package project with standard features.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/a-balakmet/citro_byte_lib
 
 # versions' history
 # 0.0.1 - initial version
 # 0.0.2 - a module with Shared Preferences was added
 # 0.0.3 - debug log added in Shared Preferences
+# 0.0.4 - Shared Preferences with separate set-functions for each type of variables
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
