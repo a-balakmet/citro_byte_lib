@@ -10,8 +10,8 @@ abstract class BaseController extends GetxController {}
 
 mixin BasicController<T, R> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
-  //StreamController<Result<T>> controller = StreamController<Result<T>>();
-  StreamController<Result<T>> controller = StreamController();
+  //StreamSubscription<Result<T>> subscription = StreamSubscription;
+  StreamController<Result<T>> controller = StreamController<Result<T>>.broadcast();
   //Stream<Result<T>>? stream;
   Rx<R>? observable;
   var isLogin = false;
