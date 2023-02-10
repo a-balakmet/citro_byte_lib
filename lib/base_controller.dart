@@ -10,20 +10,22 @@ mixin BasicController<T, R> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
   Stream<Result<T>>? stream;
   Rx<R>? observable;
+  var isLogin = false;
 
   @override
   void onInit() {
     observable = initObservable();
     stream = initStream();
     if (observable == null) {
-      debugPrint('CitroByte LIB: launch stream without observable');
+      if (isLogin) debugPrint('CitroByte LIB: launch stream $T without observable');
       fetch();
     } else {
       observable!.listen((p0) {
-        debugPrint('CitroByte LIB: re-launch stream on change of observable');
+        if (isLogin) debugPrint('CitroByte LIB: re-launch stream $T with observable $R');
         fetch();
       });
     }
+    supplementaryInit();
     super.onInit();
   }
 
@@ -36,5 +38,5 @@ mixin BasicController<T, R> on BaseController {
 
   Stream<Result<T>> initStream();
   Rx<R>? initObservable();
-  void postLoadingHandler();
+  void supplementaryInit();
 }
