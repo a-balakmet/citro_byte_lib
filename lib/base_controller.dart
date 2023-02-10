@@ -25,10 +25,12 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Future<void> fetch() async {
-    stream?.listen((event) {
-      result(event);
-      update();
-    });
+    if (stream != null) {
+      stream?.listen((event) {
+        result(event);
+        update();
+      });
+    }
   }
 
   Stream<Result<T>> initStream();
