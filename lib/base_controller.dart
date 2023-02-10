@@ -35,6 +35,7 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Future<void> fetch() async {
+    stream = null;
     stream = initStream();
   }
 
