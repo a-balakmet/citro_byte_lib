@@ -11,6 +11,7 @@ abstract class BaseController extends GetxController {}
 mixin BasicController<T, R> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
   //StreamController<Result<T>> controller = StreamController<Result<T>>();
+  StreamSubscription<Result<T>>? subscription;
   Stream<Result<T>>? stream;
   Rx<R>? observable;
   var isLogin = false;
@@ -34,18 +35,25 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Future<void> fetch() async {
-    if (isLogin) log('CitroByte LIB: listening stream $stream');
-    StreamSubscription<Result<T>>? subscription = stream?.listen((event) {
+    subscription?.cancel();
+    subscription = stream?.listen((event) {
       if (isLogin) log('CitroByte LIB: listening stream $T ${event.toString()}');
       result(event);
       update();
     });
-    subscription?.onData((data) {
-      if (isLogin) log('!!!! CitroByte LIB: listening stream $T ${data.toString()}');
-      result(data);
-      update();
-    });
-    subscription?.cancel();
+
+    // if (isLogin) log('CitroByte LIB: listening stream $stream');
+    // StreamSubscription<Result<T>>? subscription = stream?.listen((event) {
+    //   if (isLogin) log('CitroByte LIB: listening stream $T ${event.toString()}');
+    //   result(event);
+    //   update();
+    // });
+    // subscription?.onData((data) {
+    //   if (isLogin) log('!!!! CitroByte LIB: listening stream $T ${data.toString()}');
+    //   result(data);
+    //   update();
+    // });
+    // subscription?.cancel();
   }
 
   Stream<Result<T>> initStream();
