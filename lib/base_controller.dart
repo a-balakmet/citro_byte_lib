@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+import 'dart:developer';
+
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -14,14 +15,14 @@ mixin BasicController<T, R> on BaseController {
 
   @override
   void onInit() {
+    isLogin = setLogin();
     observable = initObservable();
-    stream = initStream();
     if (observable == null) {
-      if (isLogin) debugPrint('CitroByte LIB: launch stream $T without observable');
+      if (isLogin) log('CitroByte LIB: launch stream $T without observable');
       fetch();
     } else {
       observable!.listen((p0) {
-        if (isLogin) debugPrint('CitroByte LIB: re-launch stream $T with observable $R');
+        if (isLogin) log('CitroByte LIB: re-launch stream $T with observable $R');
         fetch();
       });
     }
@@ -30,13 +31,11 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Future<void> fetch() async {
-    stream?.listen((event) {
-      result(event);
-      update();
-    });
+    stream = initStream();
   }
 
   Stream<Result<T>> initStream();
   Rx<R>? initObservable();
+  bool setLogin();
   void supplementaryInit();
 }
