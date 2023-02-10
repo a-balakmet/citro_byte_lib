@@ -11,8 +11,8 @@ abstract class BaseController extends GetxController {}
 mixin BasicController<T, R> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
   //StreamController<Result<T>> controller = StreamController<Result<T>>();
-  StreamSubscription<Result<T>>? subscription;
-  Stream<Result<T>>? stream;
+  StreamController<Result<T>> controller = StreamController();
+  //Stream<Result<T>>? stream;
   Rx<R>? observable;
   var isLogin = false;
 
@@ -20,7 +20,7 @@ mixin BasicController<T, R> on BaseController {
   void onInit() {
     isLogin = setLogin();
     observable = initObservable();
-    stream = initStream();
+    //stream = initStream();
     if (observable == null) {
       if (isLogin) log('CitroByte LIB: launch stream $T without observable');
       fetch();
@@ -30,34 +30,23 @@ mixin BasicController<T, R> on BaseController {
         fetch();
       });
     }
-    supplementaryInit();
+    companions();
     super.onInit();
   }
 
   Future<void> fetch() async {
-    subscription?.cancel();
-    subscription = stream?.listen((event) {
+    initStream().listen((event) {
+      controller.sink.add(event);
+    });
+    controller.stream.listen((event) {
       if (isLogin) log('CitroByte LIB: listening stream $T ${event.toString()}');
       result(event);
       update();
     });
-
-    // if (isLogin) log('CitroByte LIB: listening stream $stream');
-    // StreamSubscription<Result<T>>? subscription = stream?.listen((event) {
-    //   if (isLogin) log('CitroByte LIB: listening stream $T ${event.toString()}');
-    //   result(event);
-    //   update();
-    // });
-    // subscription?.onData((data) {
-    //   if (isLogin) log('!!!! CitroByte LIB: listening stream $T ${data.toString()}');
-    //   result(data);
-    //   update();
-    // });
-    // subscription?.cancel();
   }
 
   Stream<Result<T>> initStream();
   Rx<R>? initObservable();
   bool setLogin();
-  void supplementaryInit();
+  void companions();
 }
