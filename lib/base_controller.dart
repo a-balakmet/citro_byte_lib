@@ -17,8 +17,9 @@ mixin BasicController<T, R> on BaseController {
   @override
   void onInit() {
     isLogin = setLogin();
-    initObservable()?.then((value) => observable = value);
-    if (observable == null) {
+    observable = initObservable();
+    companions().then((value) {
+      if (observable == null) {
       if (isLogin) log('CitroByte LIB: launch stream $T without observable');
       fetch();
     } else {
@@ -27,7 +28,7 @@ mixin BasicController<T, R> on BaseController {
         fetch();
       });
     }
-    companions();
+    });
     super.onInit();
   }
 
@@ -43,7 +44,7 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Stream<Result<T>> initStream();
-  Future<Rx<R>>? initObservable();
+  Rx<R>? initObservable();
   bool setLogin();
   Future<void> companions();
 }
