@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -6,18 +7,20 @@ import 'resource/resource.dart';
 abstract class BaseController extends GetxController {}
 
 mixin BasicController<T, R> on BaseController {
-  final result = Rx<Result<T>>(Result(false, null, null, false));
+  final result = Rx<Result<T>>(Result(true, null, null, false));
   Stream<Result<T>>? stream;
   Rx<R>? observable;
 
   @override
   void onInit() {
+    observable = initObservable();
     stream = initStream();
-    if (initObservable() == null) {
+    if (observable == null) {
+      debugPrint('CitroByte LIB: launch stream without observable');
       fetch();
     } else {
-      observable = initObservable();
       observable!.listen((p0) {
+        debugPrint('CitroByte LIB: re-launch stream on change of observable');
         fetch();
       });
     }
@@ -25,12 +28,10 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Future<void> fetch() async {
-    if (stream != null) {
-      stream?.listen((event) {
-        result(event);
-        update();
-      });
-    }
+    stream?.listen((event) {
+      result(event);
+      update();
+    });
   }
 
   Stream<Result<T>> initStream();
