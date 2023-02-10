@@ -6,7 +6,7 @@ class UrlImage extends StatelessWidget {
   final double width;
   final double height;
   final double cornersRadius;
-  final bool? allRoundCorners;
+  final bool? sideRoundCorners;
   final Widget placeholder;
   final Widget errorWidget;
   const UrlImage({
@@ -15,7 +15,7 @@ class UrlImage extends StatelessWidget {
     required this.width,
     required this.height,
     required this.cornersRadius,
-    this.allRoundCorners,
+    this.sideRoundCorners,
     required this.placeholder,
     required this.errorWidget,
   }) : super(key: key);
@@ -23,6 +23,7 @@ class UrlImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: ((context) {
+      // Shit happens
       if (url.startsWith('http') && url.endsWith('jpg') || url.startsWith('http') && url.endsWith('png')) {
         return CachedNetworkImage(
           imageUrl: url,
@@ -32,9 +33,9 @@ class UrlImage extends StatelessWidget {
             width: width,
             height: height,
             decoration: BoxDecoration(
-              borderRadius: allRoundCorners == null
+              borderRadius: sideRoundCorners == null
                   ? BorderRadius.all(Radius.circular(cornersRadius))
-                  : allRoundCorners!
+                  : sideRoundCorners!
                       ? BorderRadius.only(
                           bottomLeft: Radius.circular(cornersRadius),
                           bottomRight: Radius.circular(cornersRadius),
@@ -49,8 +50,18 @@ class UrlImage extends StatelessWidget {
               ),
             ),
           ),
-          placeholder: (context, _) => Container(width: width, height: height, alignment: Alignment.center, child: placeholder),
-          errorWidget: (context, url, error) => errorWidget,
+          placeholder: (context, _) => Container(
+            width: width / 2,
+            height: height / 2,
+            alignment: Alignment.center,
+            child: placeholder,
+          ),
+          errorWidget: (context, url, error) => Container(
+            width: width / 2,
+            height: height / 2,
+            alignment: Alignment.center,
+            child: errorWidget,
+          ),
           fit: height == (MediaQuery.of(context).size.width - 40) * 0.411 ? BoxFit.fitWidth : BoxFit.fill,
           fadeInDuration: const Duration(microseconds: 0),
           fadeOutDuration: const Duration(microseconds: 0),
@@ -61,7 +72,7 @@ class UrlImage extends StatelessWidget {
           width: width,
           height: height,
           decoration: BoxDecoration(
-            borderRadius: allRoundCorners == null
+            borderRadius: sideRoundCorners == null
                 ? BorderRadius.all(Radius.circular(cornersRadius))
                 : BorderRadius.only(bottomLeft: Radius.circular(cornersRadius), bottomRight: Radius.circular(cornersRadius)),
           ),

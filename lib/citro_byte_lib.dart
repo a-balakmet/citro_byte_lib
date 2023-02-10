@@ -1,7 +1,10 @@
-// library citro_byte_lib;
+library citro_byte_lib;
 
-// /// A Calculator.
-// class Calculator {
-//   /// Returns [value] plus 1.
-//   int addOne(int value) => value + 1;
-// }
+import 'package:package_info_plus/package_info_plus.dart';
+
+class DataProvider {
+  Future<String> getVersion() async {
+    final package = await PackageInfo.fromPlatform();
+    return package.version;
+  }
+}
