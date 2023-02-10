@@ -10,7 +10,7 @@ homepage: https://github.com/a-balakmet/citro_byte_lib
 # 0.0.4 - Shared Preferences with separate set-functions for each type of variables.
 # 0.0.5 - The class with constants renamed.
 #       - UI corrections for loaded image.
-#       - DataProvider class created, it provides only app version.
+#       - CBDataProvider class created, it provides only app version.
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
