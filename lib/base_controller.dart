@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:get/get_rx/get_rx.dart';
@@ -9,6 +10,7 @@ abstract class BaseController extends GetxController {}
 
 mixin BasicController<T, R> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
+  //StreamController<Result<T>> controller = StreamController<Result<T>>();
   Stream<Result<T>>? stream;
   Rx<R>? observable;
   var isLogin = false;
@@ -17,6 +19,7 @@ mixin BasicController<T, R> on BaseController {
   void onInit() {
     isLogin = setLogin();
     observable = initObservable();
+    stream = initStream();
     if (observable == null) {
       if (isLogin) log('CitroByte LIB: launch stream $T without observable');
       fetch();
@@ -27,17 +30,15 @@ mixin BasicController<T, R> on BaseController {
       });
     }
     supplementaryInit();
-    stream?.listen((event) {
-      result(event);
-      update();
-    });
     super.onInit();
   }
 
   Future<void> fetch() async {
-    stream = null;
-    log('CitroByte LIB: re-launch stream $T with observable $R');
-    stream = initStream();
+    StreamSubscription<Result<T>>? subscription = stream?.listen((event) {
+      result(event);
+      update();
+    });
+    subscription?.cancel();
   }
 
   Stream<Result<T>> initStream();
