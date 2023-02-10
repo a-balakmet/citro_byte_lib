@@ -19,6 +19,10 @@ HttpOverrides is a class that is necessary to show images for Android Apps.
 
 Helper to get and set values in Shared Preferences.
 
+CBDataProvider is a class that returns some widely used data.
+
+BaseController is an abstract class with base method to set-up stream and launch network loading.
+
 ## Usage
 
 To use this package add in pubspec.yaml below dependencies the following lines:
