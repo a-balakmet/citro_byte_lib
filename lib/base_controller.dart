@@ -27,6 +27,10 @@ mixin BasicController<T, R> on BaseController {
       });
     }
     supplementaryInit();
+    stream?.listen((event) {
+      result(event);
+      update();
+    });
     super.onInit();
   }
 
