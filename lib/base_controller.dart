@@ -36,6 +36,7 @@ mixin BasicController<T, R> on BaseController {
 
   Future<void> fetch() async {
     stream = null;
+    log('CitroByte LIB: re-launch stream $T with observable $R');
     stream = initStream();
   }
 
