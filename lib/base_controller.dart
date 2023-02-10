@@ -34,6 +34,7 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Future<void> fetch() async {
+    if (isLogin) log('CitroByte LIB: listening stream $T');
     StreamSubscription<Result<T>>? subscription = stream?.listen((event) {
       if (isLogin) log('CitroByte LIB: listening stream $T ${event.toString()}');
       result(event);
