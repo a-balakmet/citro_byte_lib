@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:citro_byte_lib/data/remote/resource.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import 'resource/resource.dart';
 
 abstract class BaseController extends GetxController {}
 

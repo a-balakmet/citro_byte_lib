@@ -1,4 +1,4 @@
-library citro_byte_lib;
+library cb_data_provider;
 
 import 'package:package_info_plus/package_info_plus.dart';
 
