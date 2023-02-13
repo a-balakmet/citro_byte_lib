@@ -32,7 +32,7 @@ class UrlImage extends StatelessWidget {
       ImageFit.fill: () => BoxFit.fill,
       ImageFit.fitHeight: () => BoxFit.fitHeight,
       ImageFit.fitWidth: () => BoxFit.fitWidth
-    }[ImageFit]!();
+    }[imageFit]!();
 
     return Builder(builder: ((context) {
       // Shit happens
