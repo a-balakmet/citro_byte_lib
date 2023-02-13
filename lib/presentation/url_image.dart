@@ -26,12 +26,12 @@ class UrlImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BoxFit? boxFit;
-    
+    BoxFit boxFit;
+
     boxFit = <ImageFit, BoxFit Function()>{
-      ImageFit.fill:() => BoxFit.fill,
-      ImageFit.fitHeight:() => BoxFit.fitHeight,
-      ImageFit.fitWidth:() => BoxFit.fitWidth
+      ImageFit.fill: () => BoxFit.fill,
+      ImageFit.fitHeight: () => BoxFit.fitHeight,
+      ImageFit.fitWidth: () => BoxFit.fitWidth
     }[ImageFit]!();
 
     return Builder(builder: ((context) {
