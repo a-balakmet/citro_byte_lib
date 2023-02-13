@@ -58,7 +58,7 @@ class UrlImage extends StatelessWidget {
                         ),
               image: DecorationImage(
                 image: imageProvider,
-                fit: height == (MediaQuery.of(context).size.width - 40) * 0.411 ? BoxFit.fitWidth : BoxFit.fill,
+                fit: boxFit,
               ),
             ),
           ),
