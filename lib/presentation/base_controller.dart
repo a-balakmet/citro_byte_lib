@@ -7,7 +7,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 abstract class BaseController extends GetxController {}
 
-mixin BasicController<T, R> on BaseController {
+mixin BasicController<T> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
   StreamController<Result<T>> controller = StreamController<Result<T>>.broadcast();
   StreamSubscription? subscription;
