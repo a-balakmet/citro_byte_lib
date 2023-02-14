@@ -5,29 +5,29 @@ import 'package:citro_byte_lib/data/remote/resource.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-
 abstract class BaseController extends GetxController {}
 
 mixin BasicController<T, R> on BaseController {
   final result = Rx<Result<T>>(Result(true, null, null, false));
   StreamController<Result<T>> controller = StreamController<Result<T>>.broadcast();
-  Rx<R>? observable;
+  StreamSubscription? subscription;
   var isLogin = false;
 
   @override
   void onInit() {
     isLogin = setLogin();
-    observable = initObservable();
+    initSubscription();
     companions().then((value) {
-      if (observable == null) {
-      if (isLogin) log('CitroByte LIB: launch stream $T without observable');
       fetch();
-    } else {
-      observable!.listen((p0) {
-        if (isLogin) log('CitroByte LIB: re-launch stream $T with observable $R');
-        fetch();
-      });
-    }
+      // if (subscription == null) {
+      //   if (isLogin) log('CitroByte LIB: launch stream $T without observable');
+      //   fetch();
+      // } else {
+      //   subscription!.listen((p0) {
+      //     if (isLogin) log('CitroByte LIB: re-launch stream $T with observable $R');
+      //     fetch();
+      //   });
+      // }
     });
     super.onInit();
   }
@@ -44,7 +44,13 @@ mixin BasicController<T, R> on BaseController {
   }
 
   Stream<Result<T>> initStream();
-  Rx<R>? initObservable();
+  initSubscription();
   bool setLogin();
   Future<void> companions();
+
+  @override
+  void onClose() {
+    super.onClose();
+    subscription?.cancel();
+  }
 }
