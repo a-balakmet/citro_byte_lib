@@ -26,6 +26,6 @@ class ErrorMessage {
 
 extension ErrorMessageConvert on ErrorDto {
   ErrorMessage errorFromDto() {
-    return ErrorMessage(backEndCode: errorCode, isTranslatable: false, error: errorCode);
+    return ErrorMessage(backEndCode: errorCode, isTranslatable: false, error: errorMessage);
   }
 }
