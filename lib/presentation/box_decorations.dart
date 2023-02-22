@@ -4,7 +4,7 @@ mixin AppBoxDecorations {
   BoxDecoration roundedCornersDecoration({
     Color? borderColor,
     required Color fillColor,
-    required double borderRadius,
+    required double cornerRadius,
     double? borderWidth,
   }) =>
       BoxDecoration(
@@ -13,13 +13,13 @@ mixin AppBoxDecorations {
           color: borderColor ?? Colors.transparent,
           width: borderWidth ?? 1,
         ),
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(cornerRadius),
       );
 
   BoxDecoration roundedCornersDecorationWithShadow({
     required Color borderColor,
     required Color fillColor,
-    required double borderRadius,
+    required double cornerRadius,
     required Color shadowColor,
     required double blurRadius,
     required double spreadRadius,
@@ -28,7 +28,7 @@ mixin AppBoxDecorations {
       BoxDecoration(
         color: fillColor,
         border: Border.all(color: borderColor),
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(cornerRadius),
         boxShadow: [
           BoxShadow(
             color: shadowColor,
@@ -42,14 +42,14 @@ mixin AppBoxDecorations {
   BoxDecoration topCornersDecoration({
     required Color borderColor,
     required Color fillColor,
-    required double borderRadius,
+    required double cornerRadius,
   }) =>
       BoxDecoration(
         color: fillColor,
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(borderRadius),
-          topRight: Radius.circular(borderRadius),
+          topLeft: Radius.circular(cornerRadius),
+          topRight: Radius.circular(cornerRadius),
         ),
       );
 }
