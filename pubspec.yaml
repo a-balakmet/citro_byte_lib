@@ -1,6 +1,6 @@
 name: citro_byte_lib
 description: A Flutter package project with standard features.
-version: 0.0.7
+version: 0.0.8
 homepage: https://github.com/a-balakmet/citro_byte_lib
 
 # Versions' history / development of this package
@@ -10,9 +10,10 @@ homepage: https://github.com/a-balakmet/citro_byte_lib
 # 0.0.4 - Shared Preferences with separate set-functions for each type of variables.
 # 0.0.5 - The class with constants renamed.
 #       - UI corrections for loaded image.
-#       - CBDataProvider class created, it provides only app version.
-# 0.0.6 - Basic provider of GetX Controller added.
+#       - CBDataProvider class created, it provides only app version and package name.
+# 0.0.6 - Basic constructor of GetX Controller added.
 # 0.0.7 - Widget to create a filter added. It needs some data-class to build and handle selection
+# 0.0.8 - Extension to convert string to phone format added.
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
@@ -29,6 +30,8 @@ dependencies:
   cached_network_image: ^3.2.3
   package_info_plus: ^3.0.3
   get: ^4.6.5
+  intl_phone_number_input: ^0.7.2
+  libphonenumber_plugin:
 
 dev_dependencies:
   flutter_test:
