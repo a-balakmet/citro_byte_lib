@@ -1,6 +1,6 @@
 name: citro_byte_lib
-description: A Flutter package project with standard features.
-version: 0.0.8
+description: A Flutter package project with some standard features.
+version: 0.0.9
 homepage: https://github.com/a-balakmet/citro_byte_lib
 
 # Versions' history / development of this package
@@ -14,6 +14,7 @@ homepage: https://github.com/a-balakmet/citro_byte_lib
 # 0.0.6 - Basic constructor of GetX Controller added.
 # 0.0.7 - Widget to create a filter added. It needs some data-class to build and handle selection
 # 0.0.8 - Extension to convert string to phone format added.
+# 0.0.9 - Converters for TimeStamp added.
 
 environment:
   sdk: '>=2.18.2 <3.0.0'

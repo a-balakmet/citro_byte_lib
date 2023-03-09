@@ -48,4 +48,9 @@ extension Strings on String {
     String? formattedNumber = await PhoneNumberUtil.formatAsYouType(number.phoneNumber!, number.isoCode!);
     return formattedNumber ?? this;
   }
+
+  int toTimeStamp(String pattern) {
+    DateTime theDate = DateFormat(pattern).parse(this);
+    return theDate.millisecondsSinceEpoch;
+  }
 }

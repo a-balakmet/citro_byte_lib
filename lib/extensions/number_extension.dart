@@ -12,5 +12,6 @@ extension NumExtension on num {
   bool get isInt => (this % 1) == 0;
 
   double deg2rad() => this * (math.pi / 180);
-  
+
+  DateTime intToDate() => DateTime.fromMillisecondsSinceEpoch(round() * 1000);
 }
