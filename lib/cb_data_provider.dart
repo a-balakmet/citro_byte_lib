@@ -12,4 +12,6 @@ class CBDataProvider {
     final package = await PackageInfo.fromPlatform();
     return package.packageName;
   }
+
+  List<T> listDiff<T>(List<T> l1, List<T> l2) => (l1.toSet()..addAll(l2)).where((i) => !l1.contains(i) || !l2.contains(i)).toList();
 }

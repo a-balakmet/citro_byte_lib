@@ -12,9 +12,10 @@ homepage: https://github.com/a-balakmet/citro_byte_lib
 #       - UI corrections for loaded image.
 #       - CBDataProvider class created, it provides only app version and package name.
 # 0.0.6 - Basic constructor of GetX Controller added.
-# 0.0.7 - Widget to create a filter added. It needs some data-class to build and handle selection
+# 0.0.7 - Widget to create a filter added. It needs some data-class to build and handle selection.
 # 0.0.8 - Extension to convert string to phone format added.
 # 0.0.9 - Converters for TimeStamp added.
+# 0.1.0 - Function to get difference between two lists of objects added. Spelling correction.
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
