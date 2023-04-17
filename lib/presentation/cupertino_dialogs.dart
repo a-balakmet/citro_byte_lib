@@ -24,10 +24,7 @@ mixin CupertinoDialogs {
   ) {
     return CupertinoAlertDialog(title: dialogTitle != null ? Text(dialogTitle) : null, content: dialogText != null ? Text(dialogText) : null, actions: [
       CupertinoDialogAction(
-        child: Text(
-          noText,
-          style: const TextStyle(fontWeight: FontWeight.w700),
-        ),
+        child: Text(noText),
         onPressed: () => onNo(),
       ),
       CupertinoDialogAction(
