@@ -25,8 +25,8 @@ class UrlImage extends StatelessWidget {
     this.sideRoundCorners,
     this.placeholder,
     required this.errorWidget,
-    required this.baseColor,
-    required this.highlightColor,
+    this.baseColor,
+    this.highlightColor,
   }) : super(key: key);
 
   @override
