@@ -1,6 +1,6 @@
 name: citro_byte_lib
 description: A Flutter package project with some standard features.
-version: 0.1.3
+version: 0.1.4
 homepage: https://github.com/a-balakmet/citro_byte_lib
 
 # Versions' history / development of this package
@@ -19,6 +19,7 @@ homepage: https://github.com/a-balakmet/citro_byte_lib
 # 0.1.1 - Minor UI correction.
 # 0.1.2 - New abstract class for GetX Controller.
 # 0.1.3 - Extensions 'let' and 'ifNotNull' as checker for nullable variables.
+# 0.1.4 - Added: Shimmer container and shimmer effect for loading image
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
@@ -37,6 +38,7 @@ dependencies:
   get: ^4.6.5
   intl_phone_number_input: ^0.7.2
   libphonenumber_plugin:
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:
