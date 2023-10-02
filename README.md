@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
   }
 ```
 
-All other classes, mixins, extensions mey be called directly.
+All other classes, mixins, extensions may be called directly.
 
 ## Additional information
 
